@@ -1,0 +1,57 @@
+﻿@model TemperatureDisplayViewModel
+
+@{
+    ViewBag.Title = "Azure IoT Temperature Command Center";
+}
+
+<div class="jumbotron">
+        @Html.ActionLink("Activate Green LED", "ToggleDeviceOn") // 
+        @Html.ActionLink("Activate Red LED", "ToggleDeviceOff")<br />
+@if (ViewBag.message != null)
+{
+    <p>@ViewBag.message</p>
+}
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Current Temperature</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Temperature</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>@Html.DisplayFor(m => m.CurrentTemperature.temperaturereading)&deg; C</td><td>@Html.DisplayFor(m => m.CurrentTemperature.eventtime)</td></tr>
+            </tbody>
+        </table> 
+       </div>
+    <div class="col-md-4" style="overflow-wrap:break-word">
+        <h2>Exceptions</h2>
+        @foreach (var item in Model.AlertHistory)
+        {
+            <span>Exception: <pre><code>@Html.DisplayFor(m => item)</code></pre></span>
+            <br />
+        }
+        </div>
+    <div class="col-md-4">
+        <h2>Temperature History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Temperature</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.TemperatureHistory)
+                {
+                    <tr><td>@Html.DisplayFor(m => item.temperaturereading)&deg; C</td><td>@Html.DisplayFor(m => item.eventtime)</td></tr>
+                }
+            </tbody>
+        </table> 
+        
+        </div>
+</div>
