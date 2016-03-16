@@ -34,8 +34,18 @@ namespace IoTTemperatureDemo.Controllers
             // Seperate the current temperature and past temperatures. Get only the first 10
             IEnumerable<String> alertReceived = null;
             var temperatureHistory = allTemperatures?.Skip(1)?.ToList();
-            var tempCount = (temperatureHistory.Count() < 10) ? temperatureHistory.Count : 10;
-            temperatureHistory = temperatureHistory.GetRange(0, tempCount);
+            int tempCount;
+
+            try
+            {
+                tempCount = (temperatureHistory.Count() < 10) ? temperatureHistory.Count : 10;
+                temperatureHistory = temperatureHistory.GetRange(0, tempCount);
+            } catch (ArgumentNullException)
+            {
+                temperatureHistory = null;
+            }
+            
+            
             List<string> alertHistory = null;
 
             try
