@@ -17,7 +17,7 @@ namespace IoTTemperatureDemo
 
         public static DateTime ALERT_HISTORY_START_DATE = DateTime.Parse("01/01/2012");
         public static int MAX_ALERTS_TO_DISPLAY = 1000;
-        public const string EVENTHUB_NAME = "pieventhub";
+        public const string EVENTHUB_NAME = "eventhubname";
         public static async Task<IEnumerable<EventData>> ReceiveAlertsFromDeviceAsync(string partition)
         {
             //It's strongly advised to include the name of your Event Hub explicitly as an argument
