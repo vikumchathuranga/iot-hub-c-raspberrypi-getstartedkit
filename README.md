@@ -4,6 +4,8 @@ platforms: csharp,raspberry-pi
 author: AttunixCorp
 ---
 
+# Get Started with Microsoft Azure IoT Kit - Raspberry Pi
+
 Welcome to the Get Started page for your Azure IoT Starter Kit - Raspberry Pi 2. In this page, you will find two tutorials that will walk you through different scenarios. You can choose to do whichever you want to, based on your preferences. The first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT architecture. 
 
 - [Running a Simple Remote Monitoring Solution on Raspberry Pi2 with Raspbian](#running-a-simple-remote-monitoring-solution-on-raspberry-pi2-with-raspbian)
