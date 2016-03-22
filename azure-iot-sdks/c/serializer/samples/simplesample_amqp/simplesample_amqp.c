@@ -36,7 +36,7 @@ const int Grn_led_pin__i = 5;
 
 /*String containing Hostname, Device Id & Device Key in the format:             */
 /*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"    */
-static const char* connectionString = "HostName=aaaaa.azure-devices.net;DeviceId=aaaaa;SharedAccessKey=aaaaaaaaaaaaaaaaaaaaaa==";
+static const char* connectionString = "HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>";
 
 // Define the Model
 BEGIN_NAMESPACE(WeatherStation);

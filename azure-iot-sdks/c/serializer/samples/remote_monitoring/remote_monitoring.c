@@ -32,10 +32,10 @@
 #include "certs.h"
 #endif // MBED_BUILD_TIMESTAMP
 
-static const char* deviceId = "08578f25-777e-438b-876b-e2cfed911ab0";
-static const char* deviceKey = "Vg7u5edztBGW98KwHWvsHw==";
-static const char* hubName = "AuricIoTHubPiC";
-static const char* hubSuffix = "azure-devices.net";
+static const char* deviceId = "[Device Id]";
+static const char* deviceKey = "[Device Key]";
+static const char* hubName = "[IoTHub Name]";
+static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
 
 const int Spi_channel__i = 0;
 const int Spi_clock__i = 1000000L;
