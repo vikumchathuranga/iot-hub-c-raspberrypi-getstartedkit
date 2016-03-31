@@ -12,7 +12,7 @@ You can choose to start with whichever tutorial you want to. If you've never wor
 
  We hope you enjoy the process. Please provide feedback if there's anything that we can improve.
  
-  ***
+***
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
 ***
 
@@ -143,6 +143,7 @@ Now we can download the Remote Monitoring device sample, input your device crede
 ### 1.5.1 Clone repositories
 
 Clone the following repositories and combine them by entering the following commands on your Pi:
+
 ```
 cd ~
 git clone --recursive https://github.com/Azure/azure-iot-sdks.git
@@ -159,6 +160,7 @@ Now, we need to update device connection string
 ```
 nano ~/azure-iot-sdks/c/serializer/samples/remote_monitoring/remote_monitoring.c
 ```
+
 - Use the arrow keys to navigate to the following lines:
 
 ```
@@ -219,6 +221,7 @@ Humidity = 48.4% Temperature = 23.9*C
 Sending sensor value Temperature = 2, Humidity = 1610612736
 IoTHubClient accepted the message for delivery
 ```
+
 ## 1.7 View the Sensor Data from the IoT Suite Portal
 
 - Once you have the sample running, visit your dashboard by visiting azureiotsuite.com and clicking “Launch” on your solution
@@ -419,6 +422,7 @@ FROM
     TempSensors
 WHERE TemperatureReading>25 
 ```
+
 ***
 **Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees Celsius to check for when creating alerts. 25 degrees Celsius is 77 degrees Fahrenheit.
 ***
@@ -457,6 +461,7 @@ WHERE TemperatureReading>25
    - Windows and Mac installers can be found here: https://nodejs.org/en/download/
      - Ensure that you select the options to install NPM and add to your PATH.
    - Linux users can use the commands:
+
 ```
 sudo apt-get update
 sudo apt-get install nodejs
@@ -464,6 +469,7 @@ sudo apt-get install npm
 ``` 
 
 - Additionally, make sure you have cloned the project repository locally by issuing the following command in your desired directory:
+
 ```
 git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
 ```
@@ -492,11 +498,13 @@ bower install
 ```
 
 - Now it is time to run it! Enter the following command:
+
 ```
 node server.js
 ```
 
 - You should then see something similar to:
+
 ```
 app running on http://localhost:3000
 client connected
@@ -520,6 +528,7 @@ git clone --recursive https://github.com/Azure/azure-iot-sdks.git
 git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
 cp -a iot-hub-c-raspberrypi-getstartedkit/azure-iot-sdks/. azure-iot-sdks/
 ```
+
 Now, we need to update three things:
 
 - Include the required libraries (included in the git repository)
@@ -539,6 +548,7 @@ nano ~/azure-iot-sdks/c/serializer/samples/simplesample_amqp/simplesample_amqp.c
 ```
 static const char* connectionString = "HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>";
 ```
+
 - Replace the placeholder with your device connection information you gathered at the beginning of this tutorial. 
 - Save and exit with `Control-o, Enter, Control-x`
 
@@ -565,6 +575,7 @@ chmod +x ~/azure-iot-sdks/c/build_all/linux/build.sh
 ```
 sudo cmake/serializer/samples/simplesample_amqp/simplesample_amqp
 ```
+
 You will now see data being sent off at regular intervals to
 Microsoft Azure. An alert has also been set to go off when it detects the temperature is above 25 degrees celsius (77'F). You can cup your hand around the sensor and blow warm air to raise the temperature and when the alert goes off, you will see the LED you’ve set up turn red!
 
