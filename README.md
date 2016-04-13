@@ -10,7 +10,7 @@ This page contains technical information to help you get familiar with Azure IoT
 
 You can choose to start with whichever tutorial you want to. If you've never worked with Azure IoT services before, we encourage you to start with the Remote Monitoring solution tutorial, because all of the Azure services will be provisioned for you in a built-in preconfigured solution. Then you can explore how each of the services work by going through the second tutorial.
 
- We hope you enjoy the process. Please provide feedback if there's anything that we can improve.
+We hope you enjoy the process. Please provide feedback if there's anything that we can improve.
  
 ***
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
@@ -44,6 +44,7 @@ This tutorial describes the process of taking your Microsoft Azure IoT Starter K
 ## 1.1 Tutorial Overview
 
 In this tutorial, you'll be doing the following:
+
 - Setting up your environment on Azure using the Microsoft Azure IoT Suite Remote Monitoring preconfigured solution, getting a large portion of the set-up that would be required done in one step.
 - Setting your device and sensors up so that it can communicate with both your computer, and Azure IoT. 
 - Updating the device code sample to include our connection data and send it to Azure IoT to be viewed remotely.
@@ -200,11 +201,13 @@ chmod +x ~/azure-iot-sdks/c/build_all/linux/build.sh
 ```
 sudo nano /boot/config.txt
 ```
+
 - Scroll down and find the line:
 
 ```
 #dtparam=spi=on
 ```
+
 - Delete the `#` at the beginning of the line to uncomment it.
 - Save and exit with `Control-o`, `Enter`, `Control-x`, then run the command:
 
@@ -217,6 +220,7 @@ sudo reboot
 ```
 sudo ~/cmake/serializer/samples/remote_monitoring/remote_monitoring
 ```
+
 If all goes well, you will begin to see data streaming!
 Press `ctrl-c` to exit at any time. Below is a sample of the expected command prompt output:
 
@@ -243,8 +247,7 @@ Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develo
 
 # Using Microsoft Azure IoT Services to Identify Temperature Anomalies
 
-This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2, and using it to develop a temperature and humidity reader that can communicate with Microsoft Azure IoT Services, process the data,
-detects abnormal data, and sends that back to the Pi for use. We will be using
+This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2, and using it to develop a temperature and humidity reader that can communicate with Microsoft Azure IoT Services, process the data, detects abnormal data, and sends that back to the Pi for use. We will be using
 the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples,
 please visit [windowsondevices.com](http://www.windowsondevices.com/).
 
@@ -395,6 +398,7 @@ Now we will create a service to store our data in the cloud.
 - Once the account is created, find it in the **resources blade** or click on the **pinned tile**, go to **Settings**, **Keys**, and write down the _primary connection string_.
 
 ## 2.7 Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts
+
 Stream Analytics is an Azure IoT service that streams and analyzes data in the cloud. We'll use it to process data coming from your device.
 
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
