@@ -356,13 +356,15 @@ The default login for Raspbian is username `pi` with password `raspberry`. If yo
 ## 2.5 Create an Event Hub
 
 Before creating the Event Hub, we need to have a Resource Group created that will contain our resources. In the [Microsoft Azure Portal](https://portal.azure.com/):
+
 - Click the "Resource groups" button on the left
 - Click the "+" icon (Add)
-  - Enter the name for your resource group (We chose `Pi2Suite`)
-  - Subscription: `Your choice`
-  - Region: `Your choice`
+    - Enter the name for your resource group (We chose `Pi2Suite`)
+    - Subscription: `Your choice`
+    - Region: `Your choice`
   
 Event Hub is an Azure IoT publish-subscribe service that can ingest millions of events per second and stream them into multiple applications, services or devices.
+
 - From the [Azure Portal](https://portal.azure.com/) look at the top left portion of the screen
 - Click on **New** -&gt; **Internet of Things**-&gt; **Event Hub**
 - After being redirected, click "Custom Create", Enter the following settings for the Event Hub (use a name of your choice for the event hub and the namespace):
