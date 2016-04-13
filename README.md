@@ -55,14 +55,14 @@ In this tutorial, you'll be doing the following:
 - An SSH client – This makes it so you can remotely access the Raspberry Pi’s command line remotely from your computer
   - Windows doesn’t have a built-in SSH client. We recommend using [PuTTY](http://www.putty.org/)
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
-  - See also: [SSH Using Linux of Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
+  - See also: [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
 
 ### 1.2.2 Required Hardware
 
 - Microsoft Azure IoT Starter Kit
   - 8GB MicroSD Card (Comes with the kit, flashed with Windows 10 IoT Core)
-  - A USB Mini cable (Comes with the kit)
-  - An Ethernet cable or Wi-Fi dongle (Comes with the kit)
+  - A USB Mini cable
+  - An Ethernet cable or Wi-Fi dongle
 
 ## 1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device
 
@@ -74,6 +74,11 @@ In this tutorial, you'll be doing the following:
 
 - Click select in the **Remote Monitoring** option
 - Type in a solution name. For this tutorial we’ll be using “Pi2Suite”
+
+***
+**Note:** Make sure to copy down the names and connection strings mentioned into a text document for reference later.
+***
+
 - Choose your subscription plan and geographic region, then click **Create Solution**
 - Wait for Azure to finish provisioning your IoT suite (this process may take up to 10 minutes), and then click **Launch**
 
@@ -89,12 +94,12 @@ In this tutorial, you'll be doing the following:
 - Make note of your device ID, Device Key, and IoT Hub Hostname to enter into the code you’ll run on your device later 
 
 ***
-**Note:** The Remote Monitoring solution provisions a set of Azure IoT Services in your Azure account. To avoid unnecessary consumption, you may want to **stop** your remote monitoring solution while you are working on the next steps. 
+**Note:** The Remote Monitoring solution provisions a set of Azure IoT Services in your Azure account. To avoid unnecessary consumption, you may want to **stop** your remote monitoring solution while you are working on the next steps. (See: [Troubleshooting](#troubleshooting))
 ***
 
 ##1.4 Prepare the Device
 
-If this is the first time you are using Raspberry Pi 2, now it’s the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detail
+If this is the first time you are using Raspberry Pi 2, now is the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detailed
 guidelines on how to get started with the Raspberry Pi. If you’re using Linux, Raspberry Pi and Adafruit have a set of tutorials and videos to help you get started.
 
 Please visit the following links:
@@ -123,11 +128,11 @@ Please visit the following links:
 
 ### 1.4.1 Log in and Access the Terminal
 
-The default login for Raspbian is username `pi` with password `raspberry`. In the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor. This is where you will be entering commands if you use the Raspbian interface directly.
+The default login for Raspbian is username `pi` with password `raspberry`. If you use the Raspbian interface directly, in the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor.
 
 ### 1.4.2 Log in Using PuTTY
 
-- You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type `ip a` in a command prompt to discover your IP. For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+- You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type `hostname -I` in a command prompt to discover your IP. For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
 - With the Raspberry Pi on and running, open an SSH terminal program such as [PuTTY](http://www.putty.org/) on your desktop machine.
 - Use the IP address from previous step as the Host Name, Port=22, and Connection type=SSH to complete the connection.
 - When prompted, log in with username `pi`, and password `raspberry`.
@@ -229,7 +234,7 @@ IoTHubClient accepted the message for delivery
 - If the demo is running, you should see the graph change as your data updates in real time!
 
 ***
-**Note:** Make sure to **stop** your remote monitoring solution once you have completed this to avoid unnecesary Azure consumption! 
+**Note:** Make sure to **stop** your remote monitoring solution once you have completed this to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
 ## 1.8 Next steps
@@ -281,7 +286,7 @@ This tutorial has the following steps:
 - An SSH client – This makes it so you can remotely access the Raspberry Pi’s command line remotely from your computer
   - Windows doesn’t have a built-in SSH client. We recommend using [PuTTY](http://www.putty.org/)
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
-  - See also: [SSH Using Linux of Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
+  - See also: [SSH Using Linux on Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
   
 ### 2.2.2 Required Hardware
 
@@ -294,6 +299,11 @@ This tutorial has the following steps:
 
 - To create your Microsoft Azure IoT Hub and add a device, follow the instructions outlined in the [Setup IoT Hub Microsoft Azure Iot SDK page](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md).
 - We named our IoT Hub `raspPiIoT`
+
+***
+**Note:** Make sure to copy down the names and connection strings mentioned into a text document for reference later.
+***
+
 - After creating your device, make note of your connection string to enter into the code you’ll run on your device later
 
 ## 2.4 Prepare the Device
@@ -304,7 +314,7 @@ guidelines on how to get started with the Raspberry Pi. If you’re using Linux,
 Please visit the following links:
 
 - [Raspberry Pi NOOBS setup page](https://www.raspberrypi.org/help/noobs-setup/)
-- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_command_center.png?raw=true) as a reference, connect your BME280 and Feather M0 WiFi to the breadboard
+- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_command_center.png?raw=true) as a reference, connect your BME280 to the breadboard.
 
 ***
 **Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the board is place between 10 and 30 and sensor between 1 and 9. The - symbol refers to the blue row on the board, with the pins counting from the left starting at 1. See the diagram above for more reference.
@@ -334,11 +344,11 @@ Please visit the following links:
 
 ### 2.4.1 Log in and Access the Terminal
 
-The default login for Raspbian is username `pi` with password `raspberry`. In the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor. This is where you will be entering commands if you use the Raspbian interface directly.
+The default login for Raspbian is username `pi` with password `raspberry`. If you use the Raspbian interface directly, in the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor.
 
 ### 2.4.2 Log in Using PuTTY
 
-- You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type  ip a  in a command prompt to discover your IP.For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
+- You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type `hostname -I` in a command prompt to discover your IP.For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
 - With the Raspberry Pi on and running, open an SSH terminal program such as [PuTTY](http://www.putty.org/) on your desktop machine.
 - Use the IP address from previous step as the Host Name, Port=22, and Connection type=SSH to complete the connection.
 - When prompted, log in with username `pi`, and password `raspberry`.
@@ -365,7 +375,7 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 - Click the **check** at the bottom right hand corner to create your event hub.
 - Click on your `Pi2Suite` service bus (what you named your service bus)
 - Click on the **Event Hubs** tab
-- Select the `piEventHub` eventhub and go in the **Configure** tab in the **Shared Access Policies** section, add a new policy:
+- Select the `piEventHub` Event Hub and go in the **Configure** tab in the **Shared Access Policies** section, add a new policy:
     - Name = `readwrite`
     - Permissions = `Send, Listen`
 - Click **Save** at the bottom of the page, then click the **Dashboard** tab near the top and click on **Connection Information** at the bottom
@@ -375,6 +385,7 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 
 ## 2.6 Create a Storage Account for Table Storage
 Now we will create a service to store our data in the cloud.
+
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - In the menu, click **New** and select **Data + Storage** then **Storage Account**
 - Choose **Classic** for the deployment model and click on **Create**
@@ -383,9 +394,10 @@ Now we will create a service to store our data in the cloud.
 
 ## 2.7 Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts
 Stream Analytics is an Azure IoT service that streams and analyzes data in the cloud. We'll use it to process data coming from your device.
+
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - In the menu, click **New**, then click **Internet of Things**, and then click **Stream Analytics Job**
-- Enter a name for the job (We chose “PiStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new or to use an existing resource group. Choose the resource group you created earlier (In our case, `Pi2Suite`).
+- Enter a name for the job (We chose “PiStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new resource group or to use an existing resource group. Choose the resource group you created earlier (In our case, `Pi2Suite`).
 - Once the job is created, open your **Job’s blade** or click on the **pinned tile**, and find the section titled _“Job Topology”_ and click the **Inputs** tile. In the Inputs blade, click on **Add**
 - Enter the following settings:
     - Input Alias = _`TempSensors`_
@@ -446,13 +458,13 @@ WHERE MTemperature>25
     - Event Hub Policy Name = _`readwrite`_
     - Event Hub Policy Key = _Primary Key for readwrite Policy name (That's the one you wrote down after creating the event hub)_
     - Partition Key Column = _`0`_
-    - Event Serialization format = _`JSON`_
+    - Event Serialization Format = _`JSON`_
     - Encoding = _`UTF-8`_
     - Format = _`Line separated`_
 - Back in the** Stream Analytics blade**, start the job by clicking on the **Start **button at the top
 
 ***
-**Note:** Make sure to **stop** your Command Center jobs once you have completed this to avoid unnecesary Azure consumption! 
+**Note:** Make sure to **stop** your Command Center jobs once you have when you take a break or finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
 ## 2.8 Node Application Setup
@@ -611,15 +623,16 @@ You will now see data being sent off at regular intervals to
 Microsoft Azure. An alert has also been set to go off when it detects the temperature is above 25 degrees celsius (77'F). You can cup your hand around the sensor and blow warm air to raise the temperature and when the alert goes off, you will see the LED you’ve set up turn red!
 
 ***
-**Note:** If you're in a particuarlly hot or cold room, you may need to adjust the alert temperature specified in [Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts](#create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts).
+**Note:** If you're in a particularly hot or cold room, you may need to adjust the alert temperature specified in [Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts](#create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts).
 ***
 
 Head back and run your Node application and you will see the most
 recent updates and any alerts show up there.
 
 ***
-**Note:** Make sure to **stop** your Command Center jobs in Stream Analytics once you have completed this to avoid unnecesary Azure consumption! 
+**Note:** Make sure to **stop** your Command Center jobs once you have when you finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
+
 ## 2.11 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
