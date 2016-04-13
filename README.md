@@ -277,7 +277,7 @@ This tutorial has the following steps:
 ### 2.2.1 Required Software
 
 - [Git](https://git-scm.com/downloads) - For cloning the required repositories
-- [Node.js](https://nodejs.org) - For running the Node application
+- Node.js - For the Node application, we will go over this later.
 - An SSH client – This makes it so you can remotely access the Raspberry Pi’s command line remotely from your computer
   - Windows doesn’t have a built-in SSH client. We recommend using [PuTTY](http://www.putty.org/)
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
