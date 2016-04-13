@@ -368,7 +368,7 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 - Select the `piEventHub` eventhub and go in the **Configure** tab in the **Shared Access Policies** section, add a new policy:
     - Name = `readwrite`
     - Permissions = `Send, Listen`
-- Click **Save** at the bottomof the page, then click the **Dashboard** tab near the top and click on **Connection Information** at the bottom
+- Click **Save** at the bottom of the page, then click the **Dashboard** tab near the top and click on **Connection Information** at the bottom
 - _Copy down the connection string for the `readwrite` policy you created._
 - From the your IoT Hub Settings (The Resource that has connected dots) on the [Microsoft Azure Portal](https://portal.azure.com/), click the **Messaging blade** (found in your settings), write down the _Event Hub-compatible name_
 - Look at the _Event-hub-compatible Endpoint_, and write down this part: sb://**thispart**.servicebus.windows.net/ we will call this one the _IoTHub EventHub-compatible namespace_
@@ -420,7 +420,7 @@ INTO   
     TemperatureAlertToEventHub
 FROM
     TempSensors
-WHERE TemperatureReading>25 
+WHERE MTemperature>25 
 ```
 
 ***
@@ -482,18 +482,49 @@ npm install express nconf tough-cookie azure-event-hubs azure-iot-device azure-i
 bower install
 ```
 
-- Open the `config.json` file and replace the information with your project
+- Open the `config.json` file and replace the information with your project.  See the following for instructions on how to retrieve those values.
 
+    - eventhubName: 
+        - Open the [Classic Azure Management Portal](https://manage.windowsazure.com)
+        - Open the Service Bus namespace you created earlier
+        - Switch to the **EVENT HUBS** page 
+        - You can see and copy the name of your event hub from that page
+    - ehConnString: 
+        - Click on the name of the event hub from above to open it
+        - Click on the "CONNECTION INFORMATION" button along the bottom. 
+        - From there, click the button to copy the readwrite shared access policy connection string.
+    - deviceId:
+        - Use the information on the [Manage IoT Hub](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md) to retrieve your deviceId using either the Device Explorer or iothub-explorer tools.
+    - iotHubConnString: 
+        - In the [Azure Portal](https://portal.azure.com)
+        - Open the IoT Hub you created previously. 
+        - Open the "Settings" blade
+        - Click on the "Shared access policies" setting
+        - Click on the "service" policy
+        - Copy the primary connection string for the policy
+    - storageAccountName:
+        - In the [Azure Portal](https://portal.azure.com)
+        - Open the classic Storage Account you created previously to copy its name
+    - storageAccountKey:
+        - Click on the name of the storage account above to open it
+        - Click the "Settings" button to open the Settings blade
+        - Click on the "Keys" setting
+        - Click the button next to the "PRIMARY ACCESS KEY" top copy it
+    - storageTableName:
+        - This must match the name of the table that was used in the Stream Analytics table storage output above.
+        - If you used the instructions above, you would have named it ***`TemperatureRecords`*** 
+        - If you named it something else, enter the name you used instead.    
+        
 ```
 {
     "port": "3000",
     "eventHubName": "event-hub-name",
     "ehConnString": "Endpoint=sb://name.servicebus.windows.net/;SharedAccessKeyName=readwrite;SharedAccessKey=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=",
-    "deviceConnString": "HostName=name.azure-devices.net;DeviceId=device-id;SharedAccessKey=aaaaaaaaaaaaaaaaaaaaaa==",
-    "iotHubConnString": "HostName=name.azure-devices.net;SharedAccessKeyName=device;SharedAccessKey=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=",
+    "deviceId": "iot-hub-device-name",
+    "iotHubConnString": "HostName=iot-hub-name.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=",
     "storageAcountName": "aaaaaaaaaaa",
     "storageAccountKey": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa==",
-    "storageTable": "storage-table-name"
+    "storageTable": "TemperatureRecords"
 } 
 ```
 
@@ -592,3 +623,15 @@ recent updates and any alerts show up there.
 ## 2.11 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
+
+# Troubleshooting
+
+## Stopping Provisioned Services
+
+- In the [Microsoft Azure Portal](https://portal.azure.com/)
+    - Click on "All Resources"
+    - For each Stream Analytics and Web App resource:
+        - Click on the resource and click the "Stop" button in the new blade that appears
+    - For each IoT Hub resource:
+        - Click on the resource and click the "Devices" button in the new blade that appears
+        - Click on each device in the list and click the "Disable" button that appears in the new blade at the bottom
