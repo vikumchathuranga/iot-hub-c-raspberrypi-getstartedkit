@@ -280,6 +280,8 @@ This tutorial has the following steps:
 - Prepare your local web solution for monitoring and sending commands to your device.
 - Update the sample code to respond to commands and include the data from our sensors, sending it to Microsoft Azure to be viewed remotely.
 
+The end result will be a functional command center where you can view the history of your device's sensor data, a history of alerts, and send commands back to the device.
+
 ## 2.2 Requirements
 
 ### 2.2.1 Required Software
@@ -632,8 +634,7 @@ Microsoft Azure. An alert has also been set to go off when it detects the temper
 **Note:** If you're in a particularly hot or cold room, you may need to adjust the alert temperature specified in [Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts](#create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts).
 ***
 
-Head back and run your Node application and you will see the most
-recent updates and any alerts show up there.
+Head back to your Node application and you will have a fully functional command center, complete with a history of sensor data, alerts that display when the temperature got outside a certain range, and commands that you can send to your device remotely.
 
 ***
 **Note:** Make sure to **stop** your Command Center jobs once you have when you finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
