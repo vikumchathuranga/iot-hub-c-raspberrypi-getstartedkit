@@ -10,7 +10,7 @@ log_dir=$build_root
 run_e2e_tests=OFF
 run_longhaul_tests=OFF
 build_amqp=ON
-build_http=OFF
+build_http=ON
 build_mqtt=OFF
 skip_unittests=ON
 
