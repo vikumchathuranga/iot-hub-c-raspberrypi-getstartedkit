@@ -4,9 +4,9 @@ platforms: c ,raspberry-pi
 author: hegate
 ---
 
-# Get Started with Microsoft Azure IoT Starter Kit - Raspberry Pi 2
+# Get Started with Microsoft Azure IoT Starter Kit - Raspberry Pi 2 and 3
 
-This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - Raspberry Pi 2. You will find two tutorials that will walk you through different scenarios: the first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT architecture.
+This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - Raspberry Pi 2 and 3. You will find two tutorials that will walk you through different scenarios: the first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT architecture.
 
 You can choose to start with whichever tutorial you want to. If you've never worked with Azure IoT services before, we encourage you to start with the Remote Monitoring solution tutorial, because all of the Azure services will be provisioned for you in a built-in preconfigured solution. Then you can explore how each of the services work by going through the second tutorial.
 
@@ -16,12 +16,12 @@ We hope you enjoy the process. Please provide feedback if there's anything that 
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
 ***
 
-- [Connecting your Raspberry Pi2 to the Azure IoT Suite Remote Monitoring Solution](#connecting-your-raspberry-pi2-to-the-azure-iot-suite-remote-monitoring-solution)
+- [Connecting your Raspberry Pi2 or Pi3 to the Azure IoT Suite Remote Monitoring Solution](#connecting-your-raspberry-pi2-to-the-azure-iot-suite-remote-monitoring-solution)
 - [Using Microsoft Azure IoT Services to Identify Temperature Anomalies](#using-microsoft-azure-iot-services-to-identify-temperature-anomalies)
 
-# Connecting your Raspberry Pi2 to the Azure IoT Suite Remote Monitoring Solution
+# Connecting your Raspberry Pi2 or Pi3 to the Azure IoT Suite Remote Monitoring Solution
 
-This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2, and using it to develop a temperature and humidity reader that can communicate with the cloud using the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples, please visit [windowsondevices.com](http://www.windowsondevices.com/).
+This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2 and Pi 3, and using it to develop a temperature and humidity reader that can communicate with the cloud using the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples, please visit [windowsondevices.com](http://www.windowsondevices.com/).
 
 ## Table of Contents
 
@@ -104,7 +104,7 @@ In this tutorial, you'll be doing the following:
 
 ##1.4 Prepare the Device
 
-If this is the first time you are using Raspberry Pi 2, now is the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detailed
+If this is the first time you are using Raspberry Pi, now is the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detailed
 guidelines on how to get started with the Raspberry Pi. If you’re using Linux, Raspberry Pi and Adafruit have a set of tutorials and videos to help you get started.
 
 Please visit the following links:
@@ -251,7 +251,7 @@ Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develo
 
 # Using Microsoft Azure IoT Services to Identify Temperature Anomalies
 
-This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2, and using it to develop a temperature and humidity reader that can communicate with Microsoft Azure IoT Services, process the data, detects abnormal data, and sends that back to the Pi for use. We will be using
+This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2 and Pi 3, and using it to develop a temperature and humidity reader that can communicate with Microsoft Azure IoT Services, process the data, detects abnormal data, and sends that back to the Pi for use. We will be using
 the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples,
 please visit [windowsondevices.com](http://www.windowsondevices.com/).
 
@@ -317,7 +317,7 @@ The end result will be a functional command center where you can view the histor
 
 ## 2.4 Prepare the Device
 
-If this is the first time you are using Raspberry Pi 2, now it’s the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detail
+If this is the first time you are using Raspberry Pi, now it’s the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detail
 guidelines on how to get started with the Raspberry Pi. If you’re using Linux, Raspberry Pi and Adafruit have a set of tutorials and videos to help you get started.
 
 Please visit the following links:
