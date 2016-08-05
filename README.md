@@ -4,14 +4,14 @@ platforms: c ,raspberry-pi
 author: hegate
 ---
 
-# Get Started with Microsoft Azure IoT Starter Kit - Raspberry Pi 2 and 3
+# Get Started with Microsoft Azure IoT Starter Kit - Raspberry Pi2 and Pi3
 
-This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - Raspberry Pi 2 and 3. You will find two tutorials that will walk you through different scenarios: the first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT architecture.
+This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - Raspberry Pi2 and Pi3. You will find two tutorials that will walk you through different scenarios: the first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT architecture.
 
 You can choose to start with whichever tutorial you want to. If you've never worked with Azure IoT services before, we encourage you to start with the Remote Monitoring solution tutorial, because all of the Azure services will be provisioned for you in a built-in preconfigured solution. Then you can explore how each of the services work by going through the second tutorial.
 
 We hope you enjoy the process. Please provide feedback if there's anything that we can improve.
- 
+
 ***
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
 ***
@@ -22,7 +22,7 @@ We hope you enjoy the process. Please provide feedback if there's anything that 
 <a name="connecting-your-raspberry-pi" />
 # Connecting your Raspberry Pi2 or Pi3 to the Azure IoT Suite Remote Monitoring Solution
 
-This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi 2 and Pi 3, and using it to develop a temperature and humidity reader that can communicate with the cloud using the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples, please visit [windowsondevices.com](http://www.windowsondevices.com/).
+This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for Raspberry Pi2 and Pi3, and using it to develop a temperature and humidity reader that can communicate with the cloud using the Raspbian OS and Microsoft Azure IoT SDK. For Windows 10 IoT Core samples, please visit [windowsondevices.com](http://www.windowsondevices.com/).
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ This tutorial describes the process of taking your Microsoft Azure IoT Starter K
 In this tutorial, you'll be doing the following:
 
 - Setting up your environment on Azure using the Microsoft Azure IoT Suite Remote Monitoring preconfigured solution, getting a large portion of the set-up that would be required done in one step.
-- Setting your device and sensors up so that it can communicate with both your computer, and Azure IoT. 
+- Setting your device and sensors up so that it can communicate with both your computer, and Azure IoT.
 - Updating the device code sample to include our connection data and send it to Azure IoT to be viewed remotely.
 
 ## 1.2 Before Starting
@@ -68,14 +68,14 @@ In this tutorial, you'll be doing the following:
 
 ## 1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device
 
-- Log in to [Azure IoT Suite](https://www.azureiotsuite.com/)  with your Microsoft account and click **Create a New Preconfigured Solution** 
+- Log in to [Azure IoT Suite](https://www.azureiotsuite.com/)  with your Microsoft account and click **Create a New Preconfigured Solution**
 
 ***
 **Note:** Creating an account is free. Click here to get your [Azure free trial](https://azure.microsoft.com/en-us/pricing/free-trial/)
 ***
 
 - Click select in the **Remote Monitoring** option
-- Type in a solution name. For this tutorial we’ll be using “Pi2Suite”
+- Type in a solution name. For this tutorial we’ll be using “PiSuite”
 
 ***
 **Note:** Make sure to copy down the names and connection strings mentioned into a text document for reference later.
@@ -85,15 +85,15 @@ In this tutorial, you'll be doing the following:
 - Wait for Azure to finish provisioning your IoT suite (this process may take up to 10 minutes), and then click **Launch**
 
 ***
-**Note:** You may be asked to log back in. This is to ensure your solution has proper permissions associated with your account. 
+**Note:** You may be asked to log back in. This is to ensure your solution has proper permissions associated with your account.
 ***
 
-- Open the link to your IoT Suite’s “Solution Dashboard.” You may have been redirected there already. 
-- This opens your personal remote monitoring site at the URL &lt;Your IoT Hub suite name>.azurewebsites.net (e.g. Pi2Suite.azurewebsites.net)
+- Open the link to your IoT Suite’s “Solution Dashboard.” You may have been redirected there already.
+- This opens your personal remote monitoring site at the URL &lt;Your IoT Hub suite name>.azurewebsites.net (e.g. PiSuite.azurewebsites.net)
 - Click **Add a Device** at the lower left hand corner of your screen
 - Add a new **custom device**
 - Enter your desired device ID. In this case we’ll use “RaspPi”, and then click **Create**
-- Make note of your device ID, Device Key, and IoT Hub Hostname to enter into the code you’ll run on your device later 
+- Make note of your device ID, Device Key, and IoT Hub Hostname to enter into the code you’ll run on your device later
 
 ***
 **Warning:** The Remote Monitoring solution provisions a set of Azure IoT Services in your Azure account. It is meant to reflect a real enterprise architecture and thus its Azure consumption is quite heavy. To avoid unnecessary Azure consumption, we recommend you delete the preconfigured solution in azureiotsuite.com once you are done with your work (since it is easy to recreate). Alternatively, if you want to keep it up and running you can do several things to reduce consumption:
@@ -113,10 +113,10 @@ guidelines on how to get started with the Raspberry Pi. If you’re using Linux,
 Please visit the following links:
 
 - [Raspberry Pi NOOBS setup page](https://www.raspberrypi.org/help/noobs-setup/)
-- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_remote_monitoring.png?raw=true) as a reference, connect your BME280 and Feather M0 WiFi to the breadboard
+- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_remote_monitoring.png?raw=true) as a reference, connect your BME280 to the breadboard and to the Raspberry Pi
 
 ***
-**Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the board is place between 10 and 30 and sensor between 1 and 9. 
+**Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the BME280 is connected between pins 15A(VIN) and 21A(CS).
 ***
 
 | Pi Pin                  | End                    | Cable Color   |
@@ -127,10 +127,6 @@ Please visit the following links:
 | SPI_MOSI (Pin 19)       | SDI (Pin 20A)          | Green cable   |
 | GND (Pin 6)             | GND (Pin 17A)          | Black cable   |
 | 3.3V (Pin 1)            | 3Vo (Pin 16A)          | Red cable     |
-
-| Start                   | End                    | Connector     |
-| ----------------------- | ---------------------- | ------------: |
-| Pin 15E                 | Pin 21E                | BME280        |
 
 **At the end of your work, your Raspberry Pi should be connected with a working sensor.**
 
@@ -159,9 +155,8 @@ Clone the following repositories and combine them by entering the following comm
 
 ```
 cd ~
-git clone --recursive https://github.com/Azure/azure-iot-sdks.git
-git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
-cp -a iot-hub-c-raspberrypi-getstartedkit/azure-iot-sdks/. azure-iot-sdks/
+git clone --recursive https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
+git clone --recursive https://github.com/WiringPi/WiringPi.git
 ```
 
 Now, we need to update device connection string
@@ -171,7 +166,7 @@ Now, we need to update device connection string
 - Edit the file by entering the following command:
 
 ```
-nano ~/azure-iot-sdks/c/serializer/samples/remote_monitoring/remote_monitoring.c
+nano ~/iot-hub-c-raspberrypi-getstartedkit/samples/remote_monitoring/remote_monitoring.c
 ```
 
 - Use the arrow keys to navigate to the following lines:
@@ -182,7 +177,11 @@ static const char* deviceKey = "[Device Key]";
 static const char* hubName = "[IoTHub Name]";
 static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
 ```
-- Replace the placeholder with your device and IoT Hub information you created and saved at the beginning of this tutorial. 
+- Replace the placeholder with your device and IoT Hub information you created and saved at the beginning of this tutorial. In our example:
+  - Device Id --> `RaspPi`
+  - Device Key --> &lt;Azure device key ended with `==`>
+  - IoTHub Name --> `PiSuite`
+  - IoTHub Suffix, i.e. azure-devices.net --> `azure-devices.net`
 - Save and exit with `Control-o, Enter, Control-x`
 
 ## 1.6 Build the Modified Sample
@@ -197,10 +196,10 @@ sudo apt-get install curl libcurl4-openssl-dev uuid-dev uuid g++ make cmake git 
 - Now go ahead and build the updated sample solution by entering the following:
 
 ```
-cd ~/azure-iot-sdks/
-sudo ~/azure-iot-sdks/c/build_all/linux/setup.sh
-chmod +x ~/azure-iot-sdks/c/build_all/linux/build.sh
-~/azure-iot-sdks/c/build_all/linux/build.sh
+cd ~/iot-hub-c-raspberrypi-getstartedkit/
+sudo ~/iot-hub-c-raspberrypi-getstartedkit/azure-iot-sdks/c/build_all/linux/setup.sh
+chmod +x ~/iot-hub-c-raspberrypi-getstartedkit/samples/build.sh
+~/iot-hub-c-raspberrypi-getstartedkit/samples/build.sh
 ```
 
 - Before running the program we need to enable the SPI drive to install by default at boot.
@@ -216,7 +215,8 @@ sudo nano /boot/config.txt
 ```
 
 - Delete the `#` at the beginning of the line to uncomment it.
-- Save and exit with `Control-o`, `Enter`, `Control-x`, then run the command:
+- Save and exit with `Control-o`, `Enter`, `Control-x`.
+- Reboot the Raspberry Pi to enable the spi, it will disconnect the terminal, you will need to login again. Run the command:
 
 ```
 sudo reboot
@@ -225,16 +225,15 @@ sudo reboot
 - Now that everything is compiled, it’s time to run the program. Enter the command:
 
 ```
-sudo ~/cmake/serializer/samples/remote_monitoring/remote_monitoring
+sudo ~/cmake/samples/remote_monitoring/remote_monitoring
 ```
 
 If all goes well, you will begin to see data streaming!
 Press `ctrl-c` to exit at any time. Below is a sample of the expected command prompt output:
 
 ```
-IoTHubClient accepted the message for delivery
 Humidity = 48.4% Temperature = 23.9*C
-Sending sensor value Temperature = 2, Humidity = 1610612736
+Sending sensor value Temperature = 23.9*C, Humidity = 48.4%
 IoTHubClient accepted the message for delivery
 ```
 
@@ -282,7 +281,7 @@ please visit [windowsondevices.com](http://www.windowsondevices.com/).
 ## 2.1 Tutorial Overview
 
 This tutorial has the following steps:
-- Provision an IoT Hub resource on Microsoft Azure and adding your device. 
+- Provision an IoT Hub resource on Microsoft Azure and adding your device.
 - Prepare the device, get connected to the device, and set it up so that it can read sensor data.
 - Configure your Microsoft Azure IoT services by adding Event Hub, Storage Account, and Stream Analytics resources.
 - Prepare your local web solution for monitoring and sending commands to your device.
@@ -300,7 +299,7 @@ The end result will be a functional command center where you can view the histor
   - Windows doesn’t have a built-in SSH client. We recommend using [PuTTY](http://www.putty.org/)
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
   - See also: [SSH Using Linux on Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
-  
+
 ### 2.2.2 Required Hardware
 
 - Microsoft Azure IoT Starter Kit
@@ -327,13 +326,15 @@ guidelines on how to get started with the Raspberry Pi. If you’re using Linux,
 Please visit the following links:
 
 - [Raspberry Pi NOOBS setup page](https://www.raspberrypi.org/help/noobs-setup/)
-- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_command_center.png?raw=true) as a reference, connect your BME280 to the breadboard.
+- Using [this image](https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit/blob/master/img/rpi2_command_center.png?raw=true) as a reference, connect your LEDs and your BME280 to the breadboard and the Raspberry Pi.
 
 ***
-**Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the board is place between 10 and 30 and sensor between 1 and 9. The - symbol refers to the blue row on the board, with the pins counting from the left starting at 1. See the diagram above for more reference.
+**Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the sensor is place between 15E(VIN) and 21E(CS). The - symbol refers to the blue row on the board, with the pins counting from the left starting at 15. See the diagram above for more reference.
+
+**Note:** The resistor can change a little from one kit to another, it can be 330 Ohm (orange, orange, brown) or 560 Ohm (green, blue, brown), both will work with success.
 ***
 
-| Pi Pin                  | End                    | Cable Color   |
+| Raspberry Pi Pins       | Breadboard ends        | Cable Color   |
 | ----------------------- | ---------------------- | ------------: |
 | SPI_CE0 (Pin 24)        | CS (Pin 21A)           | Blue cable    |
 | SPI_SCLK (Pin 23)       | SCK (18A)              | Yellow cable  |
@@ -347,11 +348,10 @@ Please visit the following links:
 
 | Start                   | End                    | Connector     |
 | ----------------------- | ---------------------- | ------------: |
-| Pin 15E                     | Pin 21E            | BME280        |
-| Pin 4-                     | Pin 6B             | 330 Ohm Resistor  |
-| Pin 6-                     | Pin 9B             | 330 Ohm Resistor  |
-| Pin 6E                     | Pin 7E             | Red LED  |
-| Pin 9E                     | Pin 10E             | Green LED  |
+| Pin 4-                  | Pin 6B                 | Resistor      |
+| Pin 6-                  | Pin 9B                 | Resistor      |
+| Pin 6E                  | Pin 7E                 | Red LED (long leg) |
+| Pin 9E                  | Pin 10E                | Green LED (long leg) |
 
 **At the end of your work, your Raspberry Pi should be connected with a working sensor.**
 
@@ -372,10 +372,10 @@ Before creating the Event Hub, we need to have a Resource Group created that wil
 
 - Click the "Resource groups" button on the left
 - Click the "+" icon (Add)
-    - Enter the name for your resource group (We chose `Pi2Suite`)
+    - Enter the name for your resource group (We chose `PiSuite`)
     - Subscription: `Your choice`
     - Region: `Your choice`
-  
+
 Event Hub is an Azure IoT publish-subscribe service that can ingest millions of events per second and stream them into multiple applications, services or devices.
 
 - From the [Azure Portal](https://portal.azure.com/) look at the top left portion of the screen
@@ -384,11 +384,11 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
     - Event Hub Name: `piEventHub`
     - Region: `Your choice`
     - Subscription: `Your choice`
-    - Namespace Name: `Your Project Namespace, in our case “Pi2Suite”`
+    - Namespace Name: `Your Project Namespace, in our case “PiSuite”`
 - Click the **arrow** to continue.
 - Choose to create **4** partitions and retain messages for **7** days.
 - Click the **check** at the bottom right hand corner to create your event hub.
-- Click on your `Pi2Suite` service bus (what you named your service bus)
+- Click on your `PiSuite` service bus (what you named your service bus)
 - Click on the **Event Hubs** tab
 - Select the `piEventHub` Event Hub and go in the **Configure** tab in the **Shared Access Policies** section, add a new policy:
     - Name = `readwrite`
@@ -413,7 +413,7 @@ Stream Analytics is an Azure IoT service that streams and analyzes data in the c
 
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - In the menu, click **New**, then click **Internet of Things**, and then click **Stream Analytics Job**
-- Enter a name for the job (We chose “PiStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new resource group or to use an existing resource group. Choose the resource group you created earlier (In our case, `Pi2Suite`).
+- Enter a name for the job (We chose “PiStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new resource group or to use an existing resource group. Choose the resource group you created earlier (In our case, `PiSuite`).
 - Once the job is created, open your **Job’s blade** or click on the **pinned tile**, and find the section titled _“Job Topology”_ and click the **Inputs** tile. In the Inputs blade, click on **Add**
 - Enter the following settings:
     - Input Alias = _`TempSensors`_
@@ -448,7 +448,7 @@ INTO   
     TemperatureAlertToEventHub
 FROM
     TempSensors
-WHERE MTemperature>25 
+WHERE MTemperature>25
 ```
 
 ***
@@ -469,7 +469,7 @@ WHERE MTemperature>25
 - Enter the following settings then click on **Create**:
     - Output Alias = _`TemperatureAlertToEventHub`_
     - Source = _`Event Hub`_
-    - Service Bus Namespace = _`Pi2Suite`_
+    - Service Bus Namespace = _`PiSuite`_
     - Event Hub Name = _`pieventhub`_ (The Event Hub you made earlier)
     - Event Hub Policy Name = _`readwrite`_
     - Event Hub Policy Key = _Primary Key for readwrite Policy name (That's the one you wrote down after creating the event hub)_
@@ -494,38 +494,38 @@ WHERE MTemperature>25
 sudo apt-get update
 sudo apt-get install nodejs
 sudo apt-get install npm
-``` 
+```
 
 - Additionally, make sure you have cloned the project repository locally by issuing the following command in your desired directory:
 
 ```
-git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
+git clone --recursive https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
 ```
 
 - Open the `command_center_node` folder in your command prompt (`cd path/to/command_center_node`) and install the required modules by running the following:
 
 ```
 npm install -g bower
-npm install 
+npm install
 bower install
 ```
 
 - Open the `config.json` file and replace the information with your project.  See the following for instructions on how to retrieve those values.
 
-    - eventhubName: 
+    - eventhubName:
         - Open the [Classic Azure Management Portal](https://manage.windowsazure.com)
         - Open the Service Bus namespace you created earlier
-        - Switch to the **EVENT HUBS** page 
+        - Switch to the **EVENT HUBS** page
         - You can see and copy the name of your event hub from that page
-    - ehConnString: 
+    - ehConnString:
         - Click on the name of the event hub from above to open it
-        - Click on the "CONNECTION INFORMATION" button along the bottom. 
+        - Click on the "CONNECTION INFORMATION" button along the bottom.
         - From there, click the button to copy the readwrite shared access policy connection string.
     - deviceId:
         - Use the information on the [Manage IoT Hub](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md) to retrieve your deviceId using either the Device Explorer or iothub-explorer tools.
-    - iotHubConnString: 
+    - iotHubConnString:
         - In the [Azure Portal](https://portal.azure.com)
-        - Open the IoT Hub you created previously. 
+        - Open the IoT Hub you created previously.
         - Open the "Settings" blade
         - Click on the "Shared access policies" setting
         - Click on the "service" policy
@@ -540,9 +540,9 @@ bower install
         - Click the button next to the "PRIMARY ACCESS KEY" top copy it
     - storageTableName:
         - This must match the name of the table that was used in the Stream Analytics table storage output above.
-        - If you used the instructions above, you would have named it ***`TemperatureRecords`*** 
+        - If you used the instructions above, you would have named it ***`TemperatureRecords`***
         - If you named it something else, enter the name you used instead.    
-        
+
 ```
 {
     "port": "3000",
@@ -553,7 +553,7 @@ bower install
     "storageAcountName": "aaaaaaaaaaa",
     "storageAccountKey": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa==",
     "storageTable": "TemperatureRecords"
-} 
+}
 ```
 
 - Now it is time to run it! Enter the following command:
@@ -567,10 +567,10 @@ node server.js
 ```
 app running on http://localhost:3000
 client connected
-``` 
+```
 
 - Visit the url in your browser and you will see the Node app running!
- 
+
 To deploy this project to the cloud using Azure, you can reference [Creating a Node.js web app in Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/).
 
 Next, we will update your device so that it can interact with all the things you just created.
@@ -583,9 +583,8 @@ Clone the repositories by entering the following commands on your Pi:
 
 ```
 cd ~
-git clone --recursive https://github.com/Azure/azure-iot-sdks.git
-git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
-cp -a iot-hub-c-raspberrypi-getstartedkit/azure-iot-sdks/. azure-iot-sdks/
+git clone --recursive https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
+git clone --recursive https://github.com/WiringPi/WiringPi.git
 ```
 
 Now, we need to update three things:
@@ -599,16 +598,16 @@ Now, we need to update three things:
 To update the connection data, we need to update the source file. You can edit the file by entering the following command:
 
 ```
-nano ~/azure-iot-sdks/c/serializer/samples/simplesample_amqp/simplesample_amqp.c
+nano ~/iot-hub-c-raspberrypi-getstartedkit/samples/simplesample_amqp/simplesample_amqp.c
 ```
 
 - Use the arrow keys to navigate to the following lines:
 
 ```
-static const char* connectionString = "HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>";
+static const char* connectionString = "[device connection string]";
 ```
 
-- Replace the placeholder with your device connection information you gathered at the beginning of this tutorial. 
+- Replace the placeholder with your device connection information you gathered at the beginning of this tutorial. It must looks like `HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>`.
 - Save and exit with `Control-o, Enter, Control-x`
 
 ## 2.10 Build the Modified Sample
@@ -623,16 +622,16 @@ sudo apt-get install curl libcurl4-openssl-dev uuid-dev uuid g++ make cmake git 
 - Now go ahead and build the updated sample solution by entering the following:
 
 ```
-cd ~/azure-iot-sdks/
-sudo ~/azure-iot-sdks/c/build_all/linux/setup.sh
-chmod +x ~/azure-iot-sdks/c/build_all/linux/build.sh
-~/azure-iot-sdks/c/build_all/linux/build.sh
+cd ~/iot-hub-c-raspberrypi-getstartedkit/
+sudo ~/iot-hub-c-raspberrypi-getstartedkit/azure-iot-sdks/c/build_all/linux/setup.sh
+chmod +x ~/iot-hub-c-raspberrypi-getstartedkit/sample/build.sh
+~/iot-hub-c-raspberrypi-getstartedkit/sample/build.sh
 ```
 
 - Now that everything is compiled, it’s time to run the program. Enter the command:
 
 ```
-sudo cmake/serializer/samples/simplesample_amqp/simplesample_amqp
+sudo cmake/samples/simplesample_amqp/simplesample_amqp
 ```
 
 You will now see data being sent off at regular intervals to
@@ -652,6 +651,7 @@ Head back to your Node application and you will have a fully functional command 
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
 
+<a name="troubleshooting" />
 # Troubleshooting
 
 ## Stopping Provisioned Services
