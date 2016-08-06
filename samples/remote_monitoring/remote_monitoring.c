@@ -33,10 +33,10 @@
 #endif // MBED_BUILD_TIMESTAMP
 
 
-static const char* deviceId = "RaspPi";
-static const char* deviceKey = "ZsNRzU+RepaqxpHqmDzXHg==";
-static const char* hubName = "MokaFeatherM0Suite";
-static const char* hubSuffix = "azure-devices.net";
+static const char* deviceId = "[Device Id]";
+static const char* deviceKey = "[Device Key]";
+static const char* hubName = "[IoTHub Name]";
+static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
 
 static const int Spi_channel = 0;
 static const int Spi_clock = 1000000L;
