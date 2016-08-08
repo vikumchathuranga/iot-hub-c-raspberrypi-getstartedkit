@@ -200,103 +200,104 @@ void simplesample_amqp_run(void)
                     {
                         printf("unable to IoTHubClient_SetMessageCallback\r\n");
                     }
-				else
-				{
-					int Lock_fd = open_lockfile(LOCKFILE);
-					if (setuid(getuid()) < 0)
-					{
-						perror("Dropping privileges failed. (did you use sudo?)\n");
-						exit(EXIT_FAILURE);
-					}
+                    else
+                    {
+                        int Lock_fd = open_lockfile(LOCKFILE);
+                        if (setuid(getuid()) < 0)
+                        {
+                            perror("Dropping privileges failed. (did you use sudo?)\n");
+                            exit(EXIT_FAILURE);
+                        }
 
-					int result = wiringPiSetup();
-					if (result != 0) exit(result);
+                        int result = wiringPiSetup();
+                        if (result != 0) exit(result);
 
-					int Spi_fd = wiringPiSPISetup(Spi_channel, Spi_clock);
-					if (Spi_fd < 0)
-					{
-						printf("Can't setup SPI, error %i calling wiringPiSPISetup(%i, %i)  %s\n",
-							Spi_fd, Spi_channel, Spi_clock, strerror(Spi_fd));
-						exit(Spi_fd);
-					}
+                        int Spi_fd = wiringPiSPISetup(Spi_channel, Spi_clock);
+                        if (Spi_fd < 0)
+                        {
+                            printf("Can't setup SPI, error %i calling wiringPiSPISetup(%i, %i)  %s\n",
+                                Spi_fd, Spi_channel, Spi_clock, strerror(Spi_fd));
+                            exit(Spi_fd);
+                        }
 
-					int Init_result = bme280_init(Spi_channel);
-					if (Init_result != 1)
-					{
-						printf("It appears that no BMP280 module on Chip Enable %i is attached. Aborting.\n", Spi_channel);
-						exit(1);
-					}
+                        int Init_result = bme280_init(Spi_channel);
+                        if (Init_result != 1)
+                        {
+                            printf("It appears that no BMP280 module on Chip Enable %i is attached. Aborting.\n", Spi_channel);
+                            exit(1);
+                        }
 
-					pinMode(Red_led_pin, OUTPUT);
-					pinMode(Grn_led_pin, OUTPUT);
+                        pinMode(Red_led_pin, OUTPUT);
+                        pinMode(Grn_led_pin, OUTPUT);
 
-					////////////////
-
-
-					// Read the Temp & Pressure module.
-					float tempC = -300.0;
-					float pressurePa = -300;
-					float humidityPct = -300;
-					result = bme280_read_sensors(&tempC, &pressurePa, &humidityPct);
-
-					if (result == 1)
-					{
-						printf("Temperature = %.1f *C  Pressure = %.1f Pa  Humidity = %1f %%\n",
-							tempC, pressurePa, humidityPct);
-					}
-					else
-					{
-						printf("Unable to read BME280 on pin %i\n", Spi_channel);
-					}
-
-					char buff[11];
-					int timeNow = 0;
-
-					int c;
-					while (1)
-					{
-						timeNow = (int)time(NULL);
-
-						sprintf(buff, "%d", timeNow);
-
-						myWeather->DeviceId = "raspy";
-						myWeather->EventTime = buff;
-
-						if (result == 1)
-						{
-							myWeather->MTemperature = tempC;
-							printf("Humidity = %.1f%% Temperature = %.1f*C \n", humidityPct, tempC);
-						}
-						else
-						{
-							myWeather->MTemperature = 404.0;
-							printf("Unable to read BME280 on pin %i\n", Spi_channel);
-							pinMode(Red_led_pin, OUTPUT);
-						}
+                        ////////////////
 
 
-						if (SERIALIZE(&destination, &destinationSize, myWeather->DeviceId, myWeather->EventTime, myWeather->MTemperature) != IOT_AGENT_OK)
-						{
-							(void)printf("Failed to serialize\r\n");
-						}
-						else
-						{
-							sendMessage(iotHubClientHandle, destination, destinationSize);
-						}
+                        // Read the Temp & Pressure module.
+                        float tempC = -300.0;
+                        float pressurePa = -300;
+                        float humidityPct = -300;
+                        result = bme280_read_sensors(&tempC, &pressurePa, &humidityPct);
 
-						delay(5000);
-					}
-					/* wait for commands */
-				  // (void)getchar();
+                        if (result == 1)
+                        {
+                            printf("Temperature = %.1f *C  Pressure = %.1f Pa  Humidity = %1f %%\n",
+                                tempC, pressurePa, humidityPct);
+                        }
+                        else
+                        {
+                            printf("Unable to read BME280 on pin %i\n", Spi_channel);
+                        }
 
-					close_lockfile(Lock_fd);
+                        char buff[11];
+                        int timeNow = 0;
 
-				}
-				DESTROY_MODEL_INSTANCE(myWeather);
-			}
-			IoTHubClient_Destroy(iotHubClientHandle);
-		}
-		serializer_deinit();
+                        int c;
+                        while (1)
+                        {
+                            timeNow = (int)time(NULL);
+
+                            sprintf(buff, "%d", timeNow);
+
+                            myWeather->DeviceId = "raspy";
+                            myWeather->EventTime = buff;
+
+                            if (result == 1)
+                            {
+                                myWeather->MTemperature = tempC;
+                                printf("Humidity = %.1f%% Temperature = %.1f*C \n", humidityPct, tempC);
+                            }
+                            else
+                            {
+                                myWeather->MTemperature = 404.0;
+                                printf("Unable to read BME280 on pin %i\n", Spi_channel);
+                                pinMode(Red_led_pin, OUTPUT);
+                            }
+
+
+                            if (SERIALIZE(&destination, &destinationSize, myWeather->DeviceId, myWeather->EventTime, myWeather->MTemperature) != IOT_AGENT_OK)
+                            {
+                                (void)printf("Failed to serialize\r\n");
+                            }
+                            else
+                            {
+                                sendMessage(iotHubClientHandle, destination, destinationSize);
+                            }
+
+                            delay(5000);
+                        }
+                        /* wait for commands */
+                      // (void)getchar();
+
+                        close_lockfile(Lock_fd);
+
+                    }
+                    DESTROY_MODEL_INSTANCE(myWeather);
+                }
+                IoTHubClient_Destroy(iotHubClientHandle);
+            }
+            serializer_deinit();
+        }
 	}
 }
 
