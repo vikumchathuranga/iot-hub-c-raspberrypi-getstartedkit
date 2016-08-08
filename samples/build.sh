@@ -5,7 +5,7 @@
 set -e
 
 script_dir=$(cd "$(dirname "$0")" && pwd)
-build_root=$(cd "${script_dir}/../.." && pwd)
+build_root=$(cd "${script_dir}/.." && pwd)
 log_dir=$build_root
 run_e2e_tests=OFF
 run_longhaul_tests=OFF
@@ -13,6 +13,11 @@ build_amqp=ON
 build_http=ON
 build_mqtt=OFF
 skip_unittests=ON
+
+echo "Building Remote Monitoring for Raspberry Pi."
+echo "  Script directory:      "$script_dir
+echo "  Build roof:            "$build_root
+echo ""
 
 usage ()
 {
@@ -22,7 +27,7 @@ usage ()
     echo "   Example: -cl -O1 -cl ..."
     echo " --skip-e2e-tests              skip the running of end-to-end tests (e2e tests are run by default)"
     echo " --skip-unittests              skip the running of unit tests (unit tests are run by default)"
-	echo " --run-longhaul-tests          run long haul tests (long haul tests are not run by default)"
+    echo " --run-longhaul-tests          run long haul tests (long haul tests are not run by default)"
     echo ""
     echo " --no-amqp                     do no build AMQP transport and samples"
     echo " --no-http                     do no build HTTP transport and samples"
@@ -36,7 +41,7 @@ process_args ()
     extracloptions="-I\"~/wiringPi/wiringPi/\" -pthread -o $TARGET $TARGET.c -lwiringPi -lrt "
 
     for arg in $*
-    do      
+    do
       if [ $save_next_arg == 1 ]
       then
         # save arg to pass to gcc
@@ -46,7 +51,7 @@ process_args ()
           case "$arg" in
               "-cl" | "--compileoption" ) save_next_arg=1;;
               "--skip-e2e-tests" ) run_e2e_tests=OFF;;
-			  "--skip-unittests" ) skip_unittests=ON;;
+              "--skip-unittests" ) skip_unittests=ON;;
               "--run-longhaul-tests" ) run_longhaul_tests=ON;;
               "--no-amqp" ) build_amqp=OFF;;
               "--no-http" ) build_http=OFF;;
