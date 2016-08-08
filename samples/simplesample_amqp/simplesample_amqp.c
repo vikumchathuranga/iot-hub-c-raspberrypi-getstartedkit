@@ -53,8 +53,6 @@ WITH_ACTION(SetAirResistance, int, Position)
 
 END_NAMESPACE(WeatherStation);
 
-DEFINE_ENUM_STRINGS(IOTHUB_CLIENT_CONFIRMATION_RESULT, IOTHUB_CLIENT_CONFIRMATION_RESULT_VALUES)
-
 EXECUTE_COMMAND_RESULT TurnFanOn(ContosoAnemometer* device)
 {
 	(void)device;
@@ -121,7 +119,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
     const unsigned char* buffer;
     size_t size;
 
-	printf("Action Detected...\r\n");
+    printf("Action Detected...\r\n");
 
     if (IoTHubMessage_GetByteArray(message, &buffer, &size) != IOTHUB_MESSAGE_OK)
     {
@@ -305,7 +303,7 @@ int mcp3008Read(int analog_in_channel)
 {
     int result;
     
-	if ((analog_in_channel > 7) || (analog_in_channel < 0)) 
+    if ((analog_in_channel > 7) || (analog_in_channel < 0)) 
     {
         result = -1;
     }
