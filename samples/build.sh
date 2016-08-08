@@ -16,7 +16,7 @@ skip_unittests=ON
 
 echo "Building Remote Monitoring for Raspberry Pi."
 echo "  Script directory:      "$script_dir
-echo "  Build roof:            "$build_root
+echo "  Build root:            "$build_root
 echo ""
 
 usage ()
