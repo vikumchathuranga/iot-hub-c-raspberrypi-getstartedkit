@@ -331,7 +331,7 @@ Please visit the following links:
 ***
 **Note:** Column on the left corresponds to the sensor and on the right to the board. On the image, the sensor is place between 15E(VIN) and 21E(CS). The - symbol refers to the blue row on the board, with the pins counting from the left starting at 15. See the diagram above for more reference.
 
-**Note:** The resistor can change a little from one kit to another, it can be 330 Ohm (orange, orange, brown) or 560 Ohm (green, blue, brown), both will work with success.
+**Note:** The resistor can change a little from one kit to another, e.g. it can be 330 Ohm (orange, orange, brown) or 560 Ohm (green, blue, brown). Both will work with success.
 ***
 
 | Raspberry Pi Pins       | Breadboard ends        | Cable Color   |
