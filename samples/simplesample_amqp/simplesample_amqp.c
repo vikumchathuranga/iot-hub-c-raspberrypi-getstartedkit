@@ -38,6 +38,7 @@ const int Grn_led_pin = 5;
 /*String containing Hostname, Device Id & Device Key in the format:             */
 /*  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"    */
 static const char* connectionString = "[device connection string]";
+static char* deviceId = "[Device Name]";
 
 // Define the Model
 BEGIN_NAMESPACE(WeatherStation);
@@ -257,7 +258,7 @@ void simplesample_amqp_run(void)
 
                             sprintf(buff, "%d", timeNow);
 
-                            myWeather->DeviceId = "raspy";
+                            myWeather->DeviceId = deviceId;
                             myWeather->EventTime = buff;
 
                             if (result == 1)
