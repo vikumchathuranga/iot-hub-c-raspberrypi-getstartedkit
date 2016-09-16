@@ -610,6 +610,7 @@ nano ~/iot-hub-c-raspberrypi-getstartedkit/samples/simplesample_amqp/simplesampl
 
 ```
 static const char* connectionString = "[device connection string]";
+static char* deviceId = "[Device Name]";
 ```
 
 - Replace the placeholder with your device connection information you gathered at the beginning of this tutorial. It must looks like `HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>`.
